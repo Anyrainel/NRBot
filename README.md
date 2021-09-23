@@ -47,7 +47,7 @@ Currently NRBot has 3 scripts.
 
 Some features are not implemented, and they can be easily achieved using emulator built-in macro recording. Examples:
 1. **Auto repeat any 10x loops**: repeatedly tap the position of the "try again" button at bottom right corner until manual stop or X hours.
-2. **Auto sell 2* and 3* memmoirs**: record the sell loop (auto or choose 20, then sell) and repeat.
+2. **Auto sell 2\* and 3\* memmoirs**: record the sell loop (auto or choose 20, then sell) and repeat.
 3. **Chapter / event summons**: record the summon loop (try replenish, then summon 100x, wait and hit done) and repeat for X times.
 
 About emulator choices, I tested multiple emulators and found LDPlayer has the least amount of crashes (it still happens), and high graphics setting gives the best gameplay smoothness and UI responsiveness. You can try different emulators and switch between high and medium to test it for your own environment. Make sure you have "ASTC Texture" settings turned on in your emulator, the game loading screen time will be much longer if you turn it off.
