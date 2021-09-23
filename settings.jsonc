@@ -1,0 +1,72 @@
+{
+    // The installation folder of AirtestIDE. There should be a program named "AirtestIDE.exe" under this path.
+    "AirtestIDEDirectory": "D:\\Program Files\\AirtestIDE\\",
+    // Android emulator ADB url. This default is for LDPlayer and BlueStack 5. Run `adb devices` to find the name of your device. (Port 5037 is fixed.)
+    "DeviceAdbUrl": "android://127.0.0.1:5037/emulator-5554",
+    // Log directory that records each run. Default: "log". 
+    "LogReportDirectory": "log",
+    // Show a HTML report after each run. You can review bot's decision step by step.
+    "ShowLogReportAfterRun": true,
+    // Remove everything under "LogReportDirectory" (past logs) before running bot. Saves disk space.
+    "CleanUpLogBeforeRun": true,
+    "ScriptSettings": {
+        // Specify which stamina recovery to use for all game modes.
+        "Stamina": {
+            // Select and order as you like from ["small", "medium", "large"].
+            "RecoveryOrder": ["small", "medium", "large"],
+            // When using small stamina, how many to use at each time. Recommend to have at least 3.
+            "SmallUseTimes": 7
+        },
+        // Repeatedly farm dark daily quests and quit if no purple item found.
+        "ResetFarming": {
+            // Specify which characters and which difficulties to reset farm quests.
+            "Quests" : {
+                "Rion": ["easy"],
+                "Gayle": ["easy"],
+                "Dimos": ["easy"],
+                "Akeha": ["easy"],
+                "Argo": ["easy"],
+                "063y": ["easy"],
+                "F66x": ["easy"],
+                "Lars": ["easy"],
+                "Griff": ["easy"],
+                "Noelle": ["easy"]
+            },
+            // Maximum attempts for each quest.
+            "MaxAttempts": 200,
+            // Whether or not select the loadout team named "Reset" (must be exactly the same).
+            "SelectResetTeam": true,
+            // Whether or not save a screenshot before quiting a round.
+            "SaveScreenshot": true,
+            // Which path to save screenshots (relative to the bot folder). This won't be cleaned up automatically.
+            "ScreenshotPath": "screenshots"
+        },
+        // Complete all specified dark daily quests without quiting.
+        "DarkDaily": {
+            // Specify which characters and which difficulties to complete daily quests.
+            "Quests" : {
+                "Rion": ["easy", "normal"],
+                "Gayle": ["easy", "normal", "hard"],
+                "Dimos": ["easy", "normal"],
+                "Akeha": ["easy", "normal"],
+                "Argo": ["easy", "normal"],
+                "063y": ["easy", "normal"],
+                "F66x": ["easy", "normal"],
+                "Lars": ["easy", "normal", "hard"],
+                "Griff": ["easy", "normal"],
+                "Noelle": ["easy", "normal"]
+            },
+            // Whether or not select the loadout team named "DarkDaily" (must be exactly the same).
+            "SelectDarkDailyTeam": true
+        },
+        // Repeatedly farm dungeons for memoirs.
+        "Dungeon": {
+            // Choose from: ["Dynast", "Officer", "Witch", "Aberrant"]
+            "Quest": "Aberrant",
+            // How many x10 loops to perform
+            "Attempts": 100,
+            // Whether or not select the loadout team named "Dungeon" (must be exactly the same).
+            "SelectDungeonTeam": true
+        }
+    }
+}
