@@ -19,7 +19,7 @@ def loop_dark_memory(quests, select_team=True):
     for name in common.dark_char_list():
         if name not in quests:
             continue
-        touch(common.get_dark_char(name))
+        touch(common.dark_char(name))
         sleep(2)
         for diff in quests[name]:
             start_daily(diff, select_team)
@@ -29,7 +29,7 @@ def loop_dark_memory(quests, select_team=True):
 
 
 def start_daily(diff, select_team=True):
-    diff_tpl = common.get_difficulty(diff)
+    diff_tpl = common.difficulty(diff)
     touch(diff_tpl)
     sleep(1)
     start = exists(Template(r"start_button.png", record_pos=(0.108, 0.218), resolution=(1920, 1080)))

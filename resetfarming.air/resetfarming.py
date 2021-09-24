@@ -24,7 +24,7 @@ def loop_reset(quests, snapshot_path=None, max_attempts=100, select_team=True):
     for name in common.dark_char_list():
         if name not in quests:
             continue
-        touch(common.get_dark_char(name))
+        touch(common.dark_char(name))
         sleep(2)
         for diff in quests[name]:
             loop(max_attempts, diff, snapshot_path, select_team)
@@ -34,7 +34,7 @@ def loop_reset(quests, snapshot_path=None, max_attempts=100, select_team=True):
 
 
 def loop(max_attempts=100, difficulty="hard", snapshot_path=None, select_team=True):
-    quest = exists(common.get_difficulty(difficulty))
+    quest = exists(common.difficulty(difficulty))
     if not quest:
         return
     sleep(0.5)

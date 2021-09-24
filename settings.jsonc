@@ -45,16 +45,26 @@
         "DarkDaily": {
             // Specify which characters and which difficulties to complete daily quests.
             "Quests" : {
-                "Rion": ["easy", "normal"],
-                "Gayle": ["easy", "normal", "hard"],
-                "Dimos": ["easy", "normal"],
-                "Akeha": ["easy", "normal"],
-                "Argo": ["easy", "normal"],
-                "063y": ["easy", "normal"],
-                "F66x": ["easy", "normal"],
-                "Lars": ["easy", "normal", "hard"],
-                "Griff": ["easy", "normal"],
-                "Noelle": ["easy", "normal"]
+                // "Rion": ["easy", "normal"],
+                // "Gayle": ["easy", "normal", "hard"],
+                // "Dimos": ["easy", "normal"],
+                // "Akeha": ["easy", "normal"],
+                // "Argo": ["easy", "normal"],
+                // "063y": ["easy", "normal"],
+                // "F66x": ["easy", "normal"],
+                // "Lars": ["easy", "normal", "hard"],
+                // "Griff": ["easy", "normal"],
+                // "Noelle": ["easy", "normal"]
+                "Rion": ["normal"],
+                "Gayle": ["normal", "hard"],
+                "Dimos": ["normal"],
+                "Akeha": ["normal"],
+                "Argo": ["normal"],
+                "063y": ["normal"],
+                "F66x": ["normal"],
+                "Lars": ["normal", "hard"],
+                "Griff": ["normal"],
+                "Noelle": ["normal"]
             },
             // Whether or not select the loadout team named "DarkDaily" (must be exactly the same).
             "SelectDarkDailyTeam": true

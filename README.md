@@ -24,7 +24,7 @@ Currently NRBot has 3 scripts.
 
 **Requirement**: Position the game at Mama's room, or the dark memory quests page.
 
-**Action**: Constantly reset on specified quests and look for purple items. It will try up to the specified attempts for each character and difficulty selected. In settings, you can make the bot save a screenshot for each time when it quits. After the run, you can confirm if the bot is recognizing correctly and when you found negative samples you can upload to issues.
+**Action**: Constantly reset on specified quests and look for purple items. It will try up to the specified attempts for each character and difficulty selected. In settings, you can make the bot save a screenshot for each time when it quits. You can review the screenshots to confirm if the bot is recognizing correctly. When you found negative samples, you can upload them to issues.
 
 ### `DarkDaily`
 
