@@ -103,18 +103,20 @@ def handle_stamina():
         for potion in potions:
             touch(potions_tpl[potion])
             sleep(1)
-            plus = exists(Template(r"plus_button.png", record_pos=(0.173, -0.095), resolution=(1920, 1080)))
+            plus = exists(Template(r"plus_button.png", threshold=0.85, record_pos=(0.173, -0.095), resolution=(1920, 1080)))
             if plus:
                 if potion == "small":
                     for _ in range(small_times):
                         touch(plus)
                         sleep(0.3)
                 break
-        touch(Template(r"confirm_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080)))
+            else:
+                stamina_setting['RecoveryOrder'].remove(potion)
+        touch(Template(r"confirm_button.png", threshold=0.8, record_pos=(0.109, 0.217), resolution=(1920, 1080)))
         sleep(0.5)
         touch(Template(r"close_button.png", threshold=0.8, record_pos=(-0.002, 0.151), resolution=(1920, 1080)))
         sleep(2)
-        start = exists(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080)))
+        start = exists(Template(r"start_button.png", threshold=0.8, record_pos=(0.109, 0.217), resolution=(1920, 1080)))
         if not start:
             break
         else:

@@ -33,7 +33,7 @@
                 "Noelle": ["easy"]
             },
             // Maximum attempts for each quest.
-            "MaxAttempts": 200,
+            "MaxAttempts": 100,
             // Whether or not select the loadout team named "Reset" (must be exactly the same).
             "SelectResetTeam": true,
             // Whether or not save a screenshot before quiting a round.
@@ -45,22 +45,12 @@
         "DarkDaily": {
             // Specify which characters and which difficulties to complete daily quests.
             "Quests" : {
-                // "Rion": ["easy", "normal"],
-                // "Gayle": ["easy", "normal", "hard"],
-                // "Dimos": ["easy", "normal"],
-                // "Akeha": ["easy", "normal"],
-                // "Argo": ["easy", "normal"],
-                // "063y": ["easy", "normal"],
-                // "F66x": ["easy", "normal"],
-                // "Lars": ["easy", "normal", "hard"],
-                // "Griff": ["easy", "normal"],
-                // "Noelle": ["easy", "normal"]
                 "Rion": ["normal"],
                 "Gayle": ["normal", "hard"],
                 "Dimos": ["normal"],
                 "Akeha": ["normal"],
                 "Argo": ["normal"],
-                "063y": ["normal"],
+                "063y": ["normal", "hard"],
                 "F66x": ["normal"],
                 "Lars": ["normal", "hard"],
                 "Griff": ["normal"],

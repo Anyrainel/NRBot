@@ -28,6 +28,7 @@ def loop_reset(quests, snapshot_path=None, max_attempts=100, select_team=True):
         sleep(2)
         for diff in quests[name]:
             loop(max_attempts, diff, snapshot_path, select_team)
+        sleep(10)
         touch(Template(r"back_icon.png", record_pos=(-0.471, -0.252), resolution=(1920, 1080)))
         sleep(2)
     return
@@ -59,6 +60,7 @@ def loop(max_attempts=100, difficulty="hard", snapshot_path=None, select_team=Tr
         wait(Template(r"wave_3.png", threshold=0.95, record_pos=(0.47, -0.223), resolution=(1920, 1080)), timeout=120, interval=0.5)
         sleep(2)
         touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
+        sleep(0.5)
         tmp = ST.FIND_TIMEOUT_TMP
         ST.FIND_TIMEOUT_TMP = 1
         while not exists(Template(r"menu_ui.png", record_pos=(0.001, -0.223), resolution=(1920, 1080))):

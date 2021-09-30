@@ -16,6 +16,8 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
     - `darkdaily`: clears all specified daily dark lairs.
     - `dungeon`: farms specified dark dungeon for memoirs.
 
+If you see "device not ready" error, try to run `adb devices` to start the adb daemon.
+
 ## Scripts
 
 Currently NRBot has 3 scripts.
