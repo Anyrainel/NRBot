@@ -49,9 +49,15 @@ def enter_subquests():
     return
 
 
+def back():
+    touch(Template(r"back_icon.png", record_pos=(-0.471, -0.252), resolution=(1920, 1080)))
+    sleep(2)
+    return
+
+
 def close():
     sleep(1)
-    touch(Template(r"close.png", record_pos=(
+    touch(Template(r"close_icon.png", record_pos=(
             0.468, -0.25), resolution=(1920, 1080)))
     sleep(1)
     return
@@ -69,7 +75,7 @@ def dark_char(name):
         "Akeha": Template(r"akeha.png", record_pos=(0.155, -0.111), resolution=(1920, 1080)),
         "Argo": Template(r"argo.png", record_pos=(0.28, -0.109), resolution=(1920, 1080)),
         "063y": Template(r"063y.png", record_pos=(0.405, -0.113), resolution=(1920, 1080)),
-        "F66x": Template(r"F66x.png", record_pos=(-0.218, 0.176), resolution=(1920, 1080)),
+        "F66x": Template(r"f66x.png", record_pos=(-0.218, 0.176), resolution=(1920, 1080)),
         "Lars": Template(r"lars.png", record_pos=(-0.095, 0.172), resolution=(1920, 1080)),
         "Griff": Template(r"griff.png", record_pos=(0.031, 0.174), resolution=(1920, 1080)),
         "Noelle": Template(r"noelle.png", record_pos=(0.155, 0.176), resolution=(1920, 1080)),
@@ -110,8 +116,8 @@ def handle_stamina():
                         touch(plus)
                         sleep(0.3)
                 break
-            else:
-                stamina_setting['RecoveryOrder'].remove(potion)
+            # else:
+            #     stamina_setting['RecoveryOrder'].remove(potion)
         touch(Template(r"confirm_button.png", threshold=0.8, record_pos=(0.109, 0.217), resolution=(1920, 1080)))
         sleep(0.5)
         touch(Template(r"close_button.png", threshold=0.8, record_pos=(-0.002, 0.151), resolution=(1920, 1080)))

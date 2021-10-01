@@ -23,8 +23,7 @@ def loop_dark_memory(quests, select_team=True):
         sleep(2)
         for diff in quests[name]:
             start_daily(diff, select_team)
-        touch(Template(r"back_button.png", record_pos=(-0.471, -0.252), resolution=(1920, 1080)))
-        sleep(2)
+        common.back()
     return
 
 

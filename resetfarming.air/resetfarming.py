@@ -29,8 +29,7 @@ def loop_reset(quests, snapshot_path=None, max_attempts=100, select_team=True):
         for diff in quests[name]:
             loop(max_attempts, diff, snapshot_path, select_team)
         sleep(10)
-        touch(Template(r"back_icon.png", record_pos=(-0.471, -0.252), resolution=(1920, 1080)))
-        sleep(2)
+        common.back()
     return
 
 
