@@ -54,4 +54,6 @@ Some features are not implemented, and they can be easily achieved using emulato
 2. **Auto sell 2\* and 3\* memmoirs**: record the sell loop (auto or choose 20, then sell) and repeat.
 3. **Chapter / event summons**: record the summon loop (try replenish, then summon 100x, wait and hit done) and repeat for X times.
 
-About emulator choices, I tested multiple emulators and found LDPlayer has the least amount of crashes (it still happens), and high graphics setting gives the best gameplay smoothness and UI responsiveness. You can try different emulators and switch between high and medium to test it for your own environment. Make sure you have "ASTC Texture" settings turned on in your emulator, the game loading screen time will be much longer if you turn it off.
+Make sure you have "ASTC Texture" support turned on in your emulator, the game loading screen time would be much longer without it.
+
+FWIW, LDPlayer + high graphics setting gives me the best gameplay smoothness and least crashes (it still happens). You need to adjust the script for longer waiting times if your emulator is too slow.
