@@ -6,8 +6,9 @@ from os import path
 import json
 
 def init():
-#     ST.PROJECT_ROOT = Path(__file__).parent.parent.absolute()
-    ST.OPDELAY = 0.2
+    # ST.PROJECT_ROOT = Path(__file__).parent.parent.absolute()
+    ST.CVSTRATEGY = ["mstpl","tpl", "sift","brisk"]
+    ST.OPDELAY = 0.5
     ST.FIND_TIMEOUT_TMP = 1
     ST.FIND_TIMEOUT = 6
     with open(path.join(ST.PROJECT_ROOT, 'settings.jsonc'), 'r') as txt:
@@ -114,7 +115,6 @@ def handle_stamina():
                 if potion == "small":
                     for _ in range(small_times):
                         touch(plus)
-                        sleep(0.3)
                 break
             else:
                 stamina_setting['RecoveryOrder'].remove(potion)

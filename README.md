@@ -20,8 +20,6 @@ If you see "device not ready" error, try to run `adb devices` to start the adb d
 
 ## Scripts
 
-Currently NRBot has 3 scripts.
-
 ### `ResetFarming`
 
 **Requirement**: Position the game at Mama's room, or the dark memory quests page.
@@ -49,7 +47,7 @@ Currently NRBot has 3 scripts.
 
 ## Other tips
 
-Some features are not implemented, and they can be easily achieved using emulator built-in macro recording. Examples:
+Some actions can be easily achieved using emulator built-in macro recording. Examples:
 1. **Auto repeat any 10x loops**: repeatedly tap the position of the "try again" button at bottom right corner until manual stop or X hours.
 2. **Auto sell 2\* and 3\* memmoirs**: record the sell loop (auto or choose 20, then sell) and repeat.
 3. **Chapter / event summons**: record the summon loop (try replenish, then summon 100x, wait and hit done) and repeat for X times.

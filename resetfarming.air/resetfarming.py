@@ -53,6 +53,7 @@ def loop(max_attempts=100, difficulty="hard", snapshot_path=None, select_team=Tr
             touch(quest)
         sleep(1)
         touch(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080)))
+        sleep(1)
         common.handle_stamina()
         sleep(20)
         # wait(Template(r"boss_ui.png", threshold=0.8, record_pos=(-0.446, -0.218), resolution=(1920, 1080)), timeout=120, interval=0.5)
@@ -61,8 +62,15 @@ def loop(max_attempts=100, difficulty="hard", snapshot_path=None, select_team=Tr
         touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
         sleep(0.5)
         # requires a fast ST.FIND_TIMEOUT_TMP (e.g. 1 sec) to not risk ending the fight
-        while not exists(Template(r"menu_ui.png", record_pos=(0.001, -0.223), resolution=(1920, 1080))):
-            touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
+        success = False
+        for _ in range(3):
+            if not exists(Template(r"menu_ui.png", record_pos=(0.001, -0.223), resolution=(1920, 1080))):
+                touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
+            else:
+                success = True
+                break
+        if not success:
+            raise Exception("Cannot pause the fight.")
         sleep(1)
 
         # exists(Template(r"x1_number.png", record_pos=(0.2, -0.137), resolution=(1920, 1080)))
