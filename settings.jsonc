@@ -15,11 +15,11 @@
             // Select and order as you like from ["small", "medium", "large"].
             "RecoveryOrder": ["small", "medium", "large"],
             // When using small stamina, how many to use at each time. Recommend to have at least 3.
-            "SmallUseTimes": 7
+            "SmallUseTimes": 8
         },
         // Repeatedly farm dark daily quests and quit if no purple item found.
         "ResetFarming": {
-            // Specify which characters and which difficulties to reset farm quests.
+            // Specify which characters and which difficulties to reset farm quests. Easy is allegedly more efficient.
             "Quests" : {
                 "Rion": ["easy"],
                 "Gayle": ["easy"],

@@ -8,7 +8,7 @@ import json
 def init():
 #     ST.PROJECT_ROOT = Path(__file__).parent.parent.absolute()
     ST.OPDELAY = 0.2
-    ST.FIND_TIMEOUT_TMP = 1.5
+    ST.FIND_TIMEOUT_TMP = 1
     ST.FIND_TIMEOUT = 6
     with open(path.join(ST.PROJECT_ROOT, 'settings.jsonc'), 'r') as txt:
         builder = ""
@@ -116,8 +116,8 @@ def handle_stamina():
                         touch(plus)
                         sleep(0.3)
                 break
-            # else:
-            #     stamina_setting['RecoveryOrder'].remove(potion)
+            else:
+                stamina_setting['RecoveryOrder'].remove(potion)
         touch(Template(r"confirm_button.png", threshold=0.8, record_pos=(0.109, 0.217), resolution=(1920, 1080)))
         sleep(0.5)
         touch(Template(r"close_button.png", threshold=0.8, record_pos=(-0.002, 0.151), resolution=(1920, 1080)))
@@ -146,3 +146,4 @@ def handle_repeat():
     touch(Template(r"confirm_button.png", record_pos=(0.106, 0.218), resolution=(1920, 1080)))
     sleep(1)
     return
+
