@@ -60,13 +60,21 @@ def get_settings():
     return settings
 
 
-def get_logdir(rootdir, settings):
+def get_log_dir(rootdir, settings):
     reportdir = os.path.join(rootdir, settings['LogReportDirectory'])
     logdir = os.path.join(reportdir, logtime())
     if settings['CleanUpLogBeforeRun'] and os.path.isdir(reportdir):
         shutil.rmtree(reportdir)
     os.makedirs(logdir, exist_ok=True)
     return logdir
+
+
+def make_screenshot_dir(rootdir, settings):
+    reset =settings['ScriptSettings']['ResetFarming']
+    ssdir = os.path.join(rootdir, reset['ScreenshotPath'])
+    if reset['SaveScreenshot'] and not os.path.isdir(ssdir):
+        os.makedirs(ssdir, exist_ok=True)
+    return
 
 
 def get_script():
@@ -101,7 +109,8 @@ def main():
         'touch_method=MINITOUCH',
     ])
     main = os.path.join(rootdir, '%s.air' % script)
-    logdir = get_logdir(rootdir, settings)
+    logdir = get_log_dir(rootdir, settings)
+    make_screenshot_dir(rootdir, settings)
 
     run_command = '"%s" runner "%s" ' % (airtest, main)
     run_command += ' --device "%s?%s" ' % (device, params)
