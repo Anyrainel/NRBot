@@ -47,13 +47,13 @@
             "Quests" : {
                 "Rion": ["normal"],
                 "Gayle": ["normal", "hard"],
-                "Dimos": ["normal"],
-                "Akeha": ["normal"],
+                "Dimos": ["easy", "normal"],
+                "Akeha": ["easy", "normal", "hard"],
                 "Argo": ["normal"],
-                "063y": ["normal", "hard"],
+                "063y": ["easy", "normal", "hard"],
                 "F66x": ["normal"],
                 "Lars": ["normal", "hard"],
-                "Griff": ["normal"],
+                "Griff": ["easy", "normal"],
                 "Noelle": ["normal"]
             },
             // Whether or not select the loadout team named "DarkDaily" (must be exactly the same).

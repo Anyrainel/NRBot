@@ -12,9 +12,9 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 4. Update `settings.jsonc`. Refer to comments for instructions.
 5. Make sure you already set up proper team for the quests in game.
 6. Run `python NRBot.py <script_name>` in this directory. Here `<script_name>` can be any of the following:
-    - `resetfarming`: farms purple grade item in daily dark lairs by resetting if no drop.
-    - `darkdaily`: clears all specified daily dark lairs.
-    - `dungeon`: farms specified dark dungeon for memoirs.
+   - `resetfarming`: farms purple grade item in daily dark lairs by resetting if no drop.
+   - `darkdaily`: clears all specified daily dark lairs.
+   - `dungeon`: farms specified dark dungeon for memoirs.
 
 If you see "device not ready" error, try to run `adb devices` to start the adb daemon.
 
@@ -42,16 +42,17 @@ If you see "device not ready" error, try to run `adb devices` to start the adb d
 
 ## Work in progress
 
-- Detect game crash or freeze.
+- Detect game crash or freeze. (partially supported for ResetFarming)
 - Handle failure for dungeon runs.
 
 ## Other tips
 
 Some actions can be easily achieved using emulator built-in macro recording. Examples:
+
 1. **Auto repeat any 10x loops**: repeatedly tap the position of the "try again" button at bottom right corner until manual stop or X hours.
 2. **Auto sell 2\* and 3\* memmoirs**: record the sell loop (auto or choose 20, then sell) and repeat.
 3. **Chapter / event summons**: record the summon loop (try replenish, then summon 100x, wait and hit done) and repeat for X times.
 
 Make sure you have "ASTC Texture" support turned on in your emulator, the game loading screen time would be much longer without it.
 
-FWIW, LDPlayer + high graphics setting gives me the best gameplay smoothness and least crashes (it still happens). You need to adjust the script for longer waiting times if your emulator is too slow.
+FWIW, LDPlayer + medium graphics setting gives me the best gameplay smoothness and least crashes (it still happens). You need to adjust the script for longer waiting times if your emulator is too slow.

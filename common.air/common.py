@@ -5,6 +5,7 @@ from pathlib import Path
 from os import path
 import json
 
+
 def init():
     # ST.PROJECT_ROOT = Path(__file__).parent.parent.absolute()
     ST.CVSTRATEGY = ["mstpl","tpl", "sift","brisk"]
@@ -21,11 +22,14 @@ def init():
     ST.SETTINGS = settings
     return
 
+
 def get_setting(entry):
     return ST.SETTINGS['ScriptSettings'][entry]
 
+
 def get_path(subdir):
     return path.join(ST.PROJECT_ROOT, subdir)
+
 
 def enter_dark_memory():
     if exists(Template(r"dark_memory_quests.png", record_pos=(-0.391, 0.176), resolution=(1920, 1080))):
@@ -93,14 +97,15 @@ def difficulty(name):
     return difficulties[name]
 
 
+used_potions = []
 def handle_stamina():
     stamina_setting = get_setting('Stamina')
     potions = stamina_setting['RecoveryOrder']
     small_times = stamina_setting['SmallUseTimes'] - 1
     potions_tpl = {
         "small": Template(r"small_stamina_recovery.png", threshold=0.85, record_pos=(-0.012, -0.084), resolution=(1920, 1080)),
-        "medium": Template(r"medium_stamina_recovery.png", record_pos=(-0.019, 0.019), resolution=(1920, 1080)),
-        "large": Template(r"large_stamina_recovery.png", record_pos=(-0.03, 0.12), resolution=(1920, 1080)),
+        "medium": Template(r"medium_stamina_recovery.png", threshold=0.85, record_pos=(-0.019, 0.019), resolution=(1920, 1080)),
+        "large": Template(r"large_stamina_recovery.png", threshold=0.85, record_pos=(-0.03, 0.12), resolution=(1920, 1080)),
     }
     if not exists(Template(r"restore_stamina_ui.png", threshold=0.85, record_pos=(-0.001, -0.223), resolution=(1920, 1080))):
         return
@@ -108,16 +113,18 @@ def handle_stamina():
         swipe([956, 813], vector=[-0.0034, -0.3145])
         sleep(1)
         for potion in potions:
+            if potion in used_potions:
+                continue
             touch(potions_tpl[potion])
             sleep(1)
-            plus = exists(Template(r"plus_button.png", threshold=0.85, record_pos=(0.173, -0.095), resolution=(1920, 1080)))
+            plus = exists(Template(r"plus_button.png", threshold=0.9, record_pos=(0.173, -0.095), resolution=(1920, 1080)))
             if plus:
                 if potion == "small":
                     for _ in range(small_times):
                         touch(plus)
                 break
             else:
-                stamina_setting['RecoveryOrder'].remove(potion)
+                used_potions.append(potion)
         touch(Template(r"confirm_button.png", threshold=0.8, record_pos=(0.109, 0.217), resolution=(1920, 1080)))
         sleep(0.5)
         touch(Template(r"close_button.png", threshold=0.8, record_pos=(-0.002, 0.151), resolution=(1920, 1080)))
@@ -147,3 +154,29 @@ def handle_repeat():
     sleep(1)
     return
 
+
+def restart_app(resume=True):
+    """Restarts the app and resume or quit fight. Returns True if resume/quit action is taken."""
+    stop_app('com.square_enix.android_googleplay.nierspww')
+    sleep(2)
+    touch([10, 500])
+    sleep(2)
+    start_app('com.square_enix.android_googleplay.nierspww')
+    sleep(12)
+    tap = wait(Template(r"tap_to_start.png", record_pos=(0.0, 0.224), resolution=(1920, 1080)), timeout=60, interval=1)
+    sleep(1)
+    touch(tap)
+    sleep(10)
+    try:
+        wait(Template(r"resume_ui.png", record_pos=(0.001, -0.126), resolution=(1920, 1080)), timeout=30, interval=1)
+        sleep(1)
+        if resume:
+            touch(Template(r"continue_button.png", record_pos=(0.107, 0.152), resolution=(1920, 1080)))
+        else:
+            touch(Template(r"quit_button.png", record_pos=(-0.109, 0.151), resolution=(1920, 1080)))
+        sleep(2)
+        return True
+    except:
+        pass
+    wait(Template(r"mama_icon.png", record_pos=(0.407, 0.19), resolution=(1920, 1080)), timeout=60, interval=1)
+    return False

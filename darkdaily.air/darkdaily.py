@@ -20,7 +20,7 @@ def loop_dark_memory(quests, select_team=True):
         if name not in quests:
             continue
         touch(common.dark_char(name))
-        sleep(2)
+        sleep(1.5)
         for diff in quests[name]:
             start_daily(diff, select_team)
         common.back()
@@ -47,7 +47,7 @@ def start_daily(diff, select_team=True):
     touch(done)
     sleep(5)
     wait(Template(r"subquests_ui.png", threshold=0.85, record_pos=(-0.353, -0.248), resolution=(1920, 1080)), timeout=30, interval=1)
-    sleep(2)
+    sleep(1)
     return
 
 
