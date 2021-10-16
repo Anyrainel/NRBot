@@ -69,7 +69,8 @@ def close():
 
 
 def dark_char_list():
-    return ["Rion", "Gayle", "Dimos", "Akeha", "Argo", "063y", "F66x", "Lars", "Griff", "Noelle"]
+    return ["Rion", "Gayle", "Dimos", "Akeha", "Argo", "063y",
+            "F66x", "Lars", "Griff", "Noelle", "Levania", "Fio"]
 
 
 def dark_char(name):
@@ -84,6 +85,8 @@ def dark_char(name):
         "Lars": Template(r"lars.png", record_pos=(-0.095, 0.172), resolution=(1920, 1080)),
         "Griff": Template(r"griff.png", record_pos=(0.031, 0.174), resolution=(1920, 1080)),
         "Noelle": Template(r"noelle.png", record_pos=(0.155, 0.176), resolution=(1920, 1080)),
+        "Levania": (Template(r"levania.png", record_pos=(0.28, 0.16), resolution=(1920, 1080))),
+        "Fio": (Template(r"fio.png", record_pos=(0.405, 0.164), resolution=(1920, 1080))),
     }
     return chars[name]
 

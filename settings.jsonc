@@ -21,19 +21,21 @@
         "ResetFarming": {
             // Specify which characters and which difficulties to reset farm quests. Easy is allegedly more efficient.
             "Quests" : {
-                "Rion": ["easy"],
+                // "Rion": ["easy"],
                 "Gayle": ["easy"],
                 "Dimos": ["easy"],
                 "Akeha": ["easy"],
-                "Argo": ["easy"],
+                // "Argo": ["easy"],
                 "063y": ["easy"],
-                "F66x": ["easy"],
+                // "F66x": ["easy"],
                 "Lars": ["easy"],
-                "Griff": ["easy"],
-                "Noelle": ["easy"]
+                "Griff": ["easy"]
+                // "Noelle": ["easy"],
+                // "Levania": ["easy"],
+                // "Fio": ["easy"]
             },
             // Maximum attempts for each quest.
-            "MaxAttempts": 100,
+            "MaxAttempts": 200,
             // Whether or not select the loadout team named "Reset" (must be exactly the same).
             "SelectResetTeam": true,
             // Whether or not save a screenshot before quiting a round.
@@ -45,16 +47,18 @@
         "DarkDaily": {
             // Specify which characters and which difficulties to complete daily quests.
             "Quests" : {
-                "Rion": ["normal"],
+                "Rion": ["easy", "normal"],
                 "Gayle": ["normal", "hard"],
-                "Dimos": ["easy", "normal"],
-                "Akeha": ["easy", "normal", "hard"],
-                "Argo": ["normal"],
-                "063y": ["easy", "normal", "hard"],
-                "F66x": ["normal"],
+                "Dimos": ["normal", "hard"],
+                "Akeha": ["normal", "hard"],
+                "Argo": ["easy", "normal"],
+                "063y": ["normal", "hard"],
+                "F66x": ["easy", "normal"],
                 "Lars": ["normal", "hard"],
-                "Griff": ["easy", "normal"],
-                "Noelle": ["normal"]
+                "Griff": ["normal", "hard"],
+                "Noelle": ["easy", "normal"],
+                "Levania": ["easy", "normal"],
+                "Fio": ["easy", "normal"]
             },
             // Whether or not select the loadout team named "DarkDaily" (must be exactly the same).
             "SelectDarkDailyTeam": true
