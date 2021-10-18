@@ -99,6 +99,8 @@ def main():
     if settings is None:
         return
 
+    run('adb devices', 'ADB')
+
     rootdir = Path(__file__).parent.absolute()
     airtest = os.path.join(
         settings['AirtestIDEDirectory'], 'AirtestIDE.exe')

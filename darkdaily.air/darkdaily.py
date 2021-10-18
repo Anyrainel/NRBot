@@ -41,7 +41,7 @@ def start_daily(diff, select_team=True):
             sleep(0.5)
     touch(start)
     common.handle_stamina()
-    sleep(45)
+    sleep(40)
     done = wait(Template(r"done_button.png", record_pos=(0.344, 0.245), resolution=(1920, 1080)), timeout=150, interval=0.5)
     sleep(1)
     touch(done)

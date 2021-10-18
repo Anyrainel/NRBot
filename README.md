@@ -1,6 +1,6 @@
 # NRBot
 
-NRBot is an image recognition based bot for Nier Reincarnation. NRBot is based on Airtest framework (Python).
+NRBot is an image recognition based bot for NieR Re[in]carnation. NRBot is based on Airtest framework (Python).
 
 It currently only support English UI. Main goal of NRBot is to automate repetitive content in the game where a simple macro won't suffice.
 
@@ -9,14 +9,13 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 1. Install emulator with adb support (e.g. LDPlayer 64bit). Use 1080x1920 mobile resolution.
 2. Turn on adb: Settings -> Other settings -> ADB Debugging -> Open remote connection
 3. Install [AirtestIDE](https://airtest.netease.com/). Extract it to your favorite path.
-4. Update `settings.jsonc`. Refer to comments for instructions.
-5. Make sure you already set up proper team for the quests in game.
-6. Run `python NRBot.py <script_name>` in this directory. Here `<script_name>` can be any of the following:
+4. Download ADB (e.g. from [here](https://developer.android.com/studio/releases/platform-tools)) and add it to your system path.
+5. Update `settings.jsonc`. Refer to comments for instructions.
+6. Make sure you already set up proper team for the quests in game.
+7. Run `python NRBot.py <script_name>` in this directory. Here `<script_name>` can be any of the following:
    - `resetfarming`: farms purple grade item in daily dark lairs by resetting if no drop.
    - `darkdaily`: clears all specified daily dark lairs.
    - `dungeon`: farms specified dark dungeon for memoirs.
-
-If you see "device not ready" error, try to run `adb devices` to start the adb daemon. (You can get adb from [here](https://developer.android.com/studio/releases/platform-tools). Add the extraction directory to your system path to call adb directly.)
 
 ## Scripts
 
