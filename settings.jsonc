@@ -57,7 +57,7 @@
                 "Lars": ["normal", "hard"],
                 "Griff": ["normal", "hard"],
                 "Noelle": ["easy", "normal"],
-                "Levania": ["easy", "normal"],
+                "Levania": ["easy", "normal", "hard"],
                 "Fio": ["easy", "normal"]
             },
             // Whether or not select the loadout team named "DarkDaily" (must be exactly the same).

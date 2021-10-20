@@ -30,7 +30,7 @@ def loop_dark_memory(quests, select_team=True):
 def start_daily(diff, select_team=True):
     diff_tpl = common.difficulty(diff)
     touch(diff_tpl)
-    sleep(1)
+    sleep(2)
     start = exists(Template(r"start_button.png", record_pos=(0.108, 0.218), resolution=(1920, 1080)))
     sleep(0.5)
     if not start:
@@ -47,7 +47,7 @@ def start_daily(diff, select_team=True):
     touch(done)
     sleep(5)
     wait(Template(r"subquests_ui.png", threshold=0.85, record_pos=(-0.353, -0.248), resolution=(1920, 1080)), timeout=30, interval=1)
-    sleep(1)
+    sleep(1.5)
     return
 
 

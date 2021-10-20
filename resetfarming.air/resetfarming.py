@@ -45,7 +45,7 @@ def loop(max_attempts=100, difficulty="easy", snapshot_path=None, select_team=Tr
         return
     sleep(0.5)
     touch(quest)
-    sleep(1)
+    sleep(2)
     if not exists(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080))):
         return
     if select_team:
@@ -108,6 +108,7 @@ def wait_fight(difficulty, snapshot_path):
         sleep(15)
         success = True
     wait(Template(r"subquests_ui.png", threshold=0.85, record_pos=(-0.353, -0.248), resolution=(1920, 1080)), timeout=30, interval=1)
+    sleep(1)
     return success
 
 
