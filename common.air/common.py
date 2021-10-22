@@ -4,6 +4,7 @@ from airtest.core.api import *
 from pathlib import Path
 from os import path
 import json
+from datetime import datetime
 
 
 def init():
@@ -30,7 +31,7 @@ def get_setting(entry):
 def take_screenshot(name):
     sspath = path.join(ST.PROJECT_ROOT, ST.SETTINGS['ScreenshotPath'])
     timestamp = datetime.now().strftime(r'%Y%m%d%H%M%S')
-    filename = sspath + '/' + timestamp + '_' + name
+    filename = sspath + '/' + timestamp + '_' + name + '.jpg'
     snapshot(filename=filename, quality=99)
     return
 
@@ -54,6 +55,19 @@ def enter_subquests():
     touch(Template(r"quests_icon.png", target_pos=2, record_pos=(-0.21, 0.177), resolution=(1920, 1080)))
     sleep(2)
     touch(Template(r"subquests_button.png", record_pos=(-0.003, -0.043), resolution=(1920, 1080)))
+    sleep(2)
+    return
+
+
+def enter_arena():
+    if exists(Template(r"arena_ui.png", record_pos=(-0.388, -0.247), resolution=(1920, 1080))):
+        return
+    touch([1739, 904])
+    touch(Template(r"mama_icon.png", record_pos=(0.407, 0.19), resolution=(1920, 1080)))
+    sleep(2)
+    touch(Template(r"quests_icon.png", target_pos=2, record_pos=(-0.21, 0.177), resolution=(1920, 1080)))
+    sleep(2)
+    touch(Template(r"arena_button.png", record_pos=(-0.001, 0.121), resolution=(1920, 1080)))
     sleep(2)
     return
 
@@ -187,3 +201,4 @@ def restart_app(resume=True):
         pass
     wait(Template(r"mama_icon.png", record_pos=(0.407, 0.19), resolution=(1920, 1080)), timeout=60, interval=1)
     return False
+

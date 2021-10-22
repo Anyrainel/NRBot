@@ -82,7 +82,7 @@ def get_script():
             'Please provide a script name! e.g. resetfarming, darkdaily, dungeon.')
         return None
     script = str(sys.argv[1]).lower()
-    if script not in ["resetfarming", "darkdaily", "dungeon"]:
+    if script not in ["resetfarming", "darkdaily", "dungeon", "arena"]:
         logger.error(
             'Script %s is not recognized. e.g. resetfarming, darkdaily, dungeon.' % script)
         return None

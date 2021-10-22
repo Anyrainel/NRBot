@@ -72,7 +72,18 @@
             // Whether or not select the loadout team named "Dungeon" (must be exactly the same).
             "SelectDungeonTeam": true
         },
+        // Repeatedly battle in arena. The bot loops clicks for focus and skills, and occasionally check if fight has ended.
         "Arena": {
+            // Whether use gems to increase BP.
+            "UseGems": true,
+            // How many fights to perform.
+            "Attempts": 100,
+            // Which skills to use eagerly. Recommend to only put in short CD ones. 3-1 means the 3rd (rightmost) unit's 1st skill (top).
+            "Skills": ["2-2", "2-1", "1-2", "1-1"],
+            // Which opponent unit to focus. 1-3 for the positions from top to bottom, 0 means no focus.
+            // Since it's a loop without detection, it will focus, then un-focus, then focus, etc.
+            // Use it to potentially increase winrate against a specific player.
+            "Focus": 0,
             // Whether or not save a screenshot after each fight.
             "SaveScreenshot": true
         }

@@ -1,6 +1,6 @@
 # NRBot
 
-NRBot is an image recognition based bot for NieR Re[in]carnation. NRBot is based on Airtest framework (Python).
+NRBot is an image recognition based bot for NieR Re\[in\]carnation. NRBot is based on Airtest framework (Python).
 
 It currently only support English UI. Main goal of NRBot is to automate repetitive content in the game where a simple macro won't suffice.
 
@@ -16,6 +16,7 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
    - `resetfarming`: farms purple grade item in daily dark lairs by resetting if no drop.
    - `darkdaily`: clears all specified daily dark lairs.
    - `dungeon`: farms specified dark dungeon for memoirs.
+   - `arena`: battles in arena.
 
 ## Scripts
 
@@ -31,7 +32,7 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 
 **Requirement**: Position the game at Mama's room or the dark memory quests page.
 
-**Action**: Loop through all daily dark lair quests. You can specify how many quests (0-3) you have unlocked for each character. The bot will go from top to bottom according to the number, and it will skip if a particular quest has been already cleared.
+**Action**: Loop through all daily dark lair quests. You can specify which quests to farm for each character (make sure you have unlocked them). The bot will attempt configured quests and skip if the quest has been already cleared.
 
 ### `Dungeon`
 
@@ -39,10 +40,21 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 
 **Action**: Loop through specified Dark dungeons to farm memoirs.
 
+### `Arena`
+
+**Requirement**: Position the game at Mama's room or the arena page. (Currently only support refuel using gems.)
+
+**Action**: Repeatedly battle in arena. It chooses opponent 1-3 in turns to avoid keep losing to very strong opponent. The bot use a very simple strategy, where it just spam tapping skills and focus. Due to spamming, it won't focus very well (it keeps going on and off). In settings, you can make the bot save a screenshot for each battle. You can review the screenshots for its performance.
+
+**Disclaimer**: This strategy is not as good as manual play. It is very good at is tapping skills, but very dumb on choosing targets. I arrange my team as (1) high-AGI high-ATK long-CD EX Gayle (2) mid-AGI short-CD sword unit (3) low-AGI high-ATK short-CD greatsword unit. The idea is to AA kill a unit, hopefully get another AA out, then use 4 short CD skills to kill the rest. (Short-CD means CDR set + 2 EX sub weapons.) Enemy counters AA or high AGI AA kills can cause loses. This is good enough for me to auto farm coins, YMMV.
+
+**Note**: After reviewing the screenshots, you can count then discard them by running `python CalcStats.py`. It will accumulate data into `stats.json`. So you can track your win rate over time.
+
 ## Work in progress
 
 - Detect game crash or freeze. (partially supported for ResetFarming)
 - Handle failure for dungeon runs.
+- Add a limit to gem replenishes. Support BP potions.
 
 ## Other tips
 
