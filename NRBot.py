@@ -70,9 +70,8 @@ def get_log_dir(rootdir, settings):
 
 
 def make_screenshot_dir(rootdir, settings):
-    reset =settings['ScriptSettings']['ResetFarming']
-    ssdir = os.path.join(rootdir, reset['ScreenshotPath'])
-    if reset['SaveScreenshot'] and not os.path.isdir(ssdir):
+    ssdir = os.path.join(rootdir, settings['ScreenshotPath'])
+    if not os.path.isdir(ssdir):
         os.makedirs(ssdir, exist_ok=True)
     return
 

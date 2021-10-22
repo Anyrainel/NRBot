@@ -11,6 +11,7 @@ def darkdaily():
     common.enter_dark_memory()
     daily_setting = common.get_setting('DarkDaily')
     loop_dark_memory(daily_setting['Quests'], daily_setting['SelectDarkDailyTeam'])
+    found_team = False
     common.close()
     return
 
@@ -23,6 +24,7 @@ def loop_dark_memory(quests, select_team=True):
         sleep(1.5)
         for diff in quests[name]:
             start_daily(diff, select_team)
+            select_team = False
         common.back()
     return
 
@@ -30,8 +32,11 @@ def loop_dark_memory(quests, select_team=True):
 def start_daily(diff, select_team=True):
     diff_tpl = common.difficulty(diff)
     touch(diff_tpl)
-    sleep(2)
-    start = exists(Template(r"start_button.png", record_pos=(0.108, 0.218), resolution=(1920, 1080)))
+    sleep(1.5)
+    try:
+        start = wait(Template(r"start_button.png", record_pos=(0.108, 0.218), resolution=(1920, 1080)))
+    except:
+        start = None
     sleep(0.5)
     if not start:
         return

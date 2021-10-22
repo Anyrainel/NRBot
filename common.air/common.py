@@ -27,8 +27,12 @@ def get_setting(entry):
     return ST.SETTINGS['ScriptSettings'][entry]
 
 
-def get_path(subdir):
-    return path.join(ST.PROJECT_ROOT, subdir)
+def take_screenshot(name):
+    sspath = path.join(ST.PROJECT_ROOT, ST.SETTINGS['ScreenshotPath'])
+    timestamp = datetime.now().strftime(r'%Y%m%d%H%M%S')
+    filename = sspath + '/' + timestamp + '_' + name
+    snapshot(filename=filename, quality=99)
+    return
 
 
 def enter_dark_memory():

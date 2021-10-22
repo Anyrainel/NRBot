@@ -12,15 +12,13 @@ def resetfarm():
     common.init()
     common.enter_dark_memory()
     reset_setting = common.get_setting("ResetFarming")
-    snapshot_path = None
-    if reset_setting['SaveScreenshot']:
-        snapshot_path = common.get_path(reset_setting['ScreenshotPath'])
-    loop_reset(reset_setting['Quests'], snapshot_path, reset_setting['MaxAttempts'], reset_setting['SelectResetTeam'])
+    loop_reset(reset_setting['Quests'], reset_setting['SaveScreenshot'],
+               reset_setting['MaxAttempts'], reset_setting['SelectResetTeam'])
     common.close()
     return
 
 
-def loop_reset(quests, snapshot_path=None, max_attempts=100, select_team=True):
+def loop_reset(quests, save_screenshot=True, max_attempts=100, select_team=True):
     for name in common.dark_char_list():
         if name not in quests:
             continue
@@ -31,15 +29,15 @@ def loop_reset(quests, snapshot_path=None, max_attempts=100, select_team=True):
             while retry:
                 retry = False
                 try:
-                    loop(max_attempts, diff, snapshot_path, select_team)
+                    loop(max_attempts, diff, save_screenshot, select_team)
                 except:
-                    retry = handle_exception(name, diff, snapshot_path)
+                    retry = handle_exception(name, diff, save_screenshot)
         sleep(2)
         common.back()
     return
 
 
-def loop(max_attempts=100, difficulty="easy", snapshot_path=None, select_team=True):
+def loop(max_attempts=100, difficulty="easy", save_screenshot=True, select_team=True):
     quest = exists(common.difficulty(difficulty))
     if not quest:
         return
@@ -61,13 +59,13 @@ def loop(max_attempts=100, difficulty="easy", snapshot_path=None, select_team=Tr
         touch(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080)))
         sleep(1)
         common.handle_stamina()
-        result = wait_fight(difficulty, snapshot_path)
+        result = wait_fight(difficulty, save_screenshot)
         if result:
             break
     return
 
 
-def wait_fight(difficulty, snapshot_path):
+def wait_fight(difficulty, save_screenshot):
     sleep(20)
     # wait(Template(r"boss_ui.png", threshold=0.8, record_pos=(-0.446, -0.218), resolution=(1920, 1080)), timeout=120, interval=0.5)
     wait(Template(r"wave_3.png", threshold=0.95, record_pos=(0.47, -0.223), resolution=(1920, 1080)), timeout=120, interval=0.5)
@@ -93,16 +91,20 @@ def wait_fight(difficulty, snapshot_path):
     # exists(Template(r"x0_icon.png", record_pos=(0.15, -0.137), resolution=(1920, 1080)))
     success = False
     if exists(Template(r"x0_number.png", threshold=0.9, record_pos=(0.201, -0.138), resolution=(1920, 1080))) and exists(Template(r"x0_vertical.png", threshold=0.9, record_pos=(0.211, -0.136), resolution=(1920, 1080))) and exists(Template(r"x0_horizontal.png", threshold=0.9, record_pos=(0.223, -0.137), resolution=(1920, 1080))):
-        take_snapshot(snapshot_path, difficulty=difficulty, quit=True)
+        if save_screenshot:
+            common.take_screenshot(difficulty + "_quit")
         touch(Template(r"quit_button.png", record_pos=(0.001, 0.168), resolution=(1920, 1080)))
         sleep(1)
         touch(Template(r"ok_button.png", record_pos=(0.108, 0.152), resolution=(1920, 1080)))
         sleep(10)
     else:
-        take_snapshot(snapshot_path, difficulty=difficulty, quit=False)
+        if save_screenshot:
+            common.take_screenshot(difficulty + "_pass")
         touch(Template(r"back_button.png", record_pos=(-0.002, 0.212), resolution=(1920, 1080)))
         sleep(10)
         done = wait(Template(r"done_button.png", record_pos=(0.344, 0.245), resolution=(1920, 1080)), timeout=120, interval=1)
+        if save_screenshot:
+            common.take_screenshot(difficulty + "_result")
         sleep(1)
         touch(done)
         sleep(15)
@@ -112,16 +114,7 @@ def wait_fight(difficulty, snapshot_path):
     return success
 
 
-def take_snapshot(snapshot_path=None, difficulty="unknown", quit=True):
-    if snapshot_path:
-        timestamp = datetime.now().strftime(r'%Y%m%d%H%M%S')
-        filename = "%s/%s_%s_%s.png" % (snapshot_path,
-                                        timestamp, difficulty, "quit" if quit else "pass")
-        snapshot(filename=filename, quality=99)
-    return
-
-
-def handle_exception(name, difficulty, snapshot_path):
+def handle_exception(name, difficulty, save_screenshot):
     sleep(10)
     done = exists(Template(r"done_button.png", record_pos=(0.344, 0.245), resolution=(1920, 1080)))
     if done:
@@ -130,7 +123,7 @@ def handle_exception(name, difficulty, snapshot_path):
         return False
     resumed = common.restart_app(resume=True)
     if resumed:
-        result = wait_fight(difficulty, snapshot_path)
+        result = wait_fight(difficulty, save_screenshot)
         return not result
     else:
         common.enter_dark_memory()

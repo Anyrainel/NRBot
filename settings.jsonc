@@ -9,6 +9,8 @@
     "ShowLogReportAfterRun": true,
     // Remove everything under "LogReportDirectory" (past logs) before running bot. Saves disk space.
     "CleanUpLogBeforeRun": true,
+    // Which path to save screenshots (relative to the bot folder). This won't be cleaned up automatically.
+    "ScreenshotPath": "screenshots",
     "ScriptSettings": {
         // Specify which stamina recovery to use for all game modes.
         "Stamina": {
@@ -39,9 +41,7 @@
             // Whether or not select the loadout team named "Reset" (must be exactly the same).
             "SelectResetTeam": true,
             // Whether or not save a screenshot before quiting a round.
-            "SaveScreenshot": true,
-            // Which path to save screenshots (relative to the bot folder). This won't be cleaned up automatically.
-            "ScreenshotPath": "screenshots"
+            "SaveScreenshot": true
         },
         // Complete all specified dark daily quests without quiting.
         "DarkDaily": {
@@ -71,6 +71,10 @@
             "Attempts": 100,
             // Whether or not select the loadout team named "Dungeon" (must be exactly the same).
             "SelectDungeonTeam": true
+        },
+        "Arena": {
+            // Whether or not save a screenshot after each fight.
+            "SaveScreenshot": true
         }
     }
 }
