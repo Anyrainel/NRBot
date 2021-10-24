@@ -30,9 +30,9 @@ def battle(seed, skills, focus=0, use_gems=True, save_screenshot=True):
     touch(opponents[seed % 3])
     touch(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080)))
     handle_bp(use_gems)
-    sleep(15)
+    sleep(10)
     tmp = ST.OPDELAY
-    ST.OPDELAY = 0.2
+    ST.OPDELAY = 0.15
     
     fpos = [None, [70, 132], [90, 293], [78, 446]]
     spos = {

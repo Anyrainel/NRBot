@@ -34,13 +34,12 @@ def run(command, name):
     logger.debug("Command: %s" % command)
     process = subprocess.Popen(
         shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
-    rc = process.poll()
-    output = process.stdout.readline().rstrip()
-    while rc is None or output:
-        if output and not output.startswith('[current_line]') and not '[DEBUG]' in output:
-            print(output)
-        rc = process.poll()
+    while process.poll() is None:
         output = process.stdout.readline().rstrip()
+        if not output:
+            break
+        if not output.startswith('[current_line]') and not '[DEBUG]' in output:
+            print(output)
 
 
 def get_settings():

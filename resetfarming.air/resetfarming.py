@@ -69,14 +69,15 @@ def wait_fight(difficulty, save_screenshot):
     sleep(20)
     # wait(Template(r"boss_ui.png", threshold=0.8, record_pos=(-0.446, -0.218), resolution=(1920, 1080)), timeout=120, interval=0.5)
     wait(Template(r"wave_3.png", threshold=0.95, record_pos=(0.47, -0.223), resolution=(1920, 1080)), timeout=120, interval=0.5)
-    sleep(2)
+    sleep(3)
     touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
     sleep(0.5)
     # requires a fast ST.FIND_TIMEOUT_TMP (e.g. 1 sec) to not risk ending the fight
     success = False
-    for _ in range(3):
+    for _ in range(5):
         if not exists(Template(r"menu_ui.png", record_pos=(0.001, -0.223), resolution=(1920, 1080))):
             touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
+            sleep(0.5)
         else:
             success = True
             break
@@ -115,12 +116,13 @@ def wait_fight(difficulty, save_screenshot):
 
 
 def handle_exception(name, difficulty, save_screenshot):
-    sleep(10)
-    done = exists(Template(r"done_button.png", record_pos=(0.344, 0.245), resolution=(1920, 1080)))
-    if done:
-        touch(done)
+    for _ in range(6):
         sleep(5)
-        return False
+        done = exists(Template(r"done_button.png", threshold=0.85, record_pos=(0.344, 0.245), resolution=(1920, 1080)))
+        if done:
+            touch(done)
+            sleep(5)
+            return False
     resumed = common.restart_app(resume=True)
     if resumed:
         result = wait_fight(difficulty, save_screenshot)

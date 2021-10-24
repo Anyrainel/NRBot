@@ -19,7 +19,7 @@ def main():
     stats = readStats()
     for root, dirs, files in os.walk('screenshots'):
         for file in files:
-            if not file.endswith('.jpg'):
+            if not file.endswith('.jpg') or 'result' in file:
                 continue
             ts, category = file.split('_', 1)
             ts = ts[:8]
