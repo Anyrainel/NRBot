@@ -43,15 +43,17 @@ def battle(seed, skills, focus=0, use_gems=True, save_screenshot=True):
         '3-1': [1698, 850],
         '3-2': [1788, 945],
     }
-    while True:
+    for i in range(100):
         if focus:
             touch(fpos[focus])
-        for _ in range(6):
+        for j in range(6):
             for skill in skills:
                 touch(spos[skill])
         done = exists(Template(r"done_button.png", record_pos=(0.267, 0.145), resolution=(1920, 1080)))
         if done:
             break
+    if not done:
+        raise Exception("Cannot finish battle")
     ST.OPDELAY = tmp
     if save_screenshot:
         won = exists(Template(r"win_rewards.png", record_pos=(0.061, 0.047), resolution=(1920, 1080)))
@@ -66,6 +68,7 @@ def battle(seed, skills, focus=0, use_gems=True, save_screenshot=True):
 def handle_bp(use_gems=True):
     if not exists(Template(r"restore_bp_ui.png", record_pos=(0.002, -0.223), resolution=(1920, 1080))):
         return
+    sleep(0.5)
     if use_gems:
         touch(Template(r"gems_option.png", record_pos=(-0.076, -0.099), resolution=(1920, 1080)))
         sleep(1)
