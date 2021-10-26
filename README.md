@@ -52,8 +52,8 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 
 ## Work in progress
 
-- Detect game crash or freeze. (partially supported for ResetFarming)
-- Handle failure for dungeon runs.
+- Handle failure / crash for dungeon runs.
+- Fix EX Akeha resetfarming cannot pause issue.
 - Add a limit to gem replenishes. Support BP potions.
 
 ## Other tips

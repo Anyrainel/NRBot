@@ -16,7 +16,7 @@ def arena():
             battle(i, arena_setting['Skills'], arena_setting['Focus'],
                    arena_setting['UseGems'], arena_setting['SaveScreenshot'])
         except:
-            break
+            handle_exception()
     common.close()
     return
 
@@ -58,7 +58,7 @@ def battle(seed, skills, focus=0, use_gems=True, save_screenshot=True):
         common.take_screenshot("win" if won else "lose")
     touch(done)
     sleep(5)
-    wait(Template(r"arena_ui.png", record_pos=(-0.384, -0.246), resolution=(1920, 1080)), timeout=20, interval=1)
+    wait(Template(r"arena_ui.png", threshold=0.85, record_pos=(-0.384, -0.246), resolution=(1920, 1080)), timeout=20, interval=1)
     sleep(3)
     return
 
@@ -81,6 +81,16 @@ def handle_bp(use_gems=True):
         touch(Template(r"cancel_button.png", record_pos=(-0.108, 0.217), resolution=(1920, 1080)))
         sleep(1)
         raise Exception("no BP left")
+    return
+
+
+def handle_exception():
+    try:
+        sleep(3)
+        common.restart_app()
+        common.enter_arena()
+    except:
+        handle_exception()
     return
 
 

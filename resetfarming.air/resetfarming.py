@@ -34,6 +34,8 @@ def loop_reset(quests, save_screenshot=True, max_attempts=100, select_team=True)
                     retry = handle_exception(name, diff, save_screenshot)
         sleep(2)
         common.back()
+        wait(Template(r"subquests_ui.png", threshold=0.85, record_pos=(-0.353, -0.248), resolution=(1920, 1080)), timeout=30, interval=1)
+        sleep(1)
     return
 
 
@@ -43,11 +45,13 @@ def loop(max_attempts=100, difficulty="easy", save_screenshot=True, select_team=
         return
     sleep(0.5)
     touch(quest)
-    sleep(2)
-    if not exists(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080))):
+    sleep(1)
+    try:
+        wait(Template(r"start_button.png", record_pos=(0.109, 0.217), resolution=(1920, 1080)), timeout=3)
+    except:
         return
     if select_team:
-        while not exists(Template(r"reset_team.png", threshold=0.9, record_pos=(-0.117, -0.158), resolution=(1920, 1080))):
+        while not exists(Template(r"reset_team.png", threshold=0.95, record_pos=(-0.117, -0.158), resolution=(1920, 1080))):
             touch([691, 539])
             sleep(0.5)
 
@@ -117,11 +121,11 @@ def wait_fight(difficulty, save_screenshot):
 
 def handle_exception(name, difficulty, save_screenshot):
     for _ in range(6):
-        sleep(5)
+        sleep(3)
         done = exists(Template(r"done_button.png", threshold=0.85, record_pos=(0.344, 0.245), resolution=(1920, 1080)))
         if done:
             touch(done)
-            sleep(5)
+            sleep(15)
             return False
     resumed = common.restart_app(resume=True)
     if resumed:

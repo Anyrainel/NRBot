@@ -11,7 +11,6 @@ def darkdaily():
     common.enter_dark_memory()
     daily_setting = common.get_setting('DarkDaily')
     loop_dark_memory(daily_setting['Quests'], daily_setting['SelectDarkDailyTeam'])
-    found_team = False
     common.close()
     return
 
@@ -23,7 +22,13 @@ def loop_dark_memory(quests, select_team=True):
         touch(common.dark_char(name))
         sleep(1.5)
         for diff in quests[name]:
-            start_daily(diff, select_team)
+            finished = False
+            while not finished:
+                finished = True
+                try:
+                    start_daily(diff, select_team)
+                except:
+                    finished = handle_exception(name)
             select_team = False
         common.back()
         wait(Template(r"subquests_ui.png", threshold=0.85, record_pos=(-0.353, -0.248), resolution=(1920, 1080)), timeout=30, interval=1)
@@ -36,7 +41,7 @@ def start_daily(diff, select_team=True):
     touch(diff_tpl)
     sleep(1)
     try:
-        start = wait(Template(r"start_button.png", record_pos=(0.108, 0.218), resolution=(1920, 1080)), timeout=5)
+        start = wait(Template(r"start_button.png", record_pos=(0.108, 0.218), resolution=(1920, 1080)), timeout=3)
     except:
         start = None
     if not start:
@@ -48,6 +53,11 @@ def start_daily(diff, select_team=True):
             sleep(0.5)
     touch(start)
     common.handle_stamina()
+    wait_fight()
+    return
+
+
+def wait_fight():
     sleep(40)
     done = wait(Template(r"done_button.png", record_pos=(0.344, 0.245), resolution=(1920, 1080)), timeout=150, interval=0.5)
     sleep(1)
@@ -56,6 +66,21 @@ def start_daily(diff, select_team=True):
     wait(Template(r"subquests_ui.png", threshold=0.85, record_pos=(-0.353, -0.248), resolution=(1920, 1080)), timeout=30, interval=1)
     sleep(1)
     return
+
+
+def handle_exception(name):
+    try:
+        resumed = common.restart_app(resume=True)
+        if resumed:
+            wait_fight()
+            return True
+        else:
+            common.enter_dark_memory()
+            touch(common.dark_char(name))
+            sleep(2)
+            return False
+    except:
+        return handle_exception()
 
 
 darkdaily()

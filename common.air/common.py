@@ -176,7 +176,7 @@ def handle_repeat():
     return
 
 
-def restart_app(resume=True):
+def restart_app(resume=None):
     """Restarts the app and resume or quit fight. Returns True if resume/quit action is taken."""
     stop_app('com.square_enix.android_googleplay.nierspww')
     sleep(2)
@@ -188,17 +188,18 @@ def restart_app(resume=True):
     sleep(1)
     touch(tap)
     sleep(10)
-    try:
-        wait(Template(r"resume_ui.png", record_pos=(0.001, -0.126), resolution=(1920, 1080)), timeout=30, interval=1)
-        sleep(1)
-        if resume:
-            touch(Template(r"continue_button.png", record_pos=(0.107, 0.152), resolution=(1920, 1080)))
-        else:
-            touch(Template(r"quit_button.png", record_pos=(-0.109, 0.151), resolution=(1920, 1080)))
-        sleep(2)
-        return True
-    except:
-        pass
+    if resume is not None:
+        try:
+            wait(Template(r"resume_ui.png", record_pos=(0.001, -0.126), resolution=(1920, 1080)), timeout=30, interval=1)
+            sleep(1)
+            if resume:
+                touch(Template(r"continue_button.png", record_pos=(0.107, 0.152), resolution=(1920, 1080)))
+            else:
+                touch(Template(r"quit_button.png", record_pos=(-0.109, 0.151), resolution=(1920, 1080)))
+            sleep(2)
+            return True
+        except:
+            pass
     wait(Template(r"mama_icon.png", record_pos=(0.407, 0.19), resolution=(1920, 1080)), timeout=60, interval=1)
     return False
 
