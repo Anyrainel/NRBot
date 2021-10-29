@@ -43,12 +43,17 @@ def run(command, name):
 
 
 def get_settings():
-    if not os.path.isfile('settings.jsonc'):
-        logger.error(
-            'Settings are missing. Copy settings.default.jsonc to settings.jsonc and adjust.')
-        return None
-    logger.info("Loading settings.jsonc.")
-    with open('settings.jsonc', 'r') as txt:
+    for s in ['settings.jsonc', 'settings.default.jsonc']:
+        if os.path.isfile(s):
+            return read_settings(s)
+    logger.error(
+        'Settings are missing. Copy settings.default.jsonc to settings.jsonc and adjust.')
+    return None
+
+
+def read_settings(filename):
+    logger.info("Loading %s." % filename)
+    with open(filename, 'r') as txt:
         builder = ""
         # Naively remove comments to avoid depending on other lib
         for linestr in txt.readlines():

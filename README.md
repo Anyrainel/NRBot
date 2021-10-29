@@ -10,7 +10,7 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 2. Turn on adb: Settings -> Other settings -> ADB Debugging -> Open remote connection
 3. Install [AirtestIDE](https://airtest.netease.com/). Extract it to your favorite path.
 4. Download ADB (e.g. from [here](https://developer.android.com/studio/releases/platform-tools)) and add it to your system path.
-5. Update `settings.jsonc`. Refer to comments for instructions.
+5. Copy `settings.default.jsonc` to `settings.jsonc` and update config. Refer to comments for instructions.
 6. Make sure you already set up proper team for the quests in game.
 7. Run `python NRBot.py <script_name>` in this directory. Here `<script_name>` can be any of the following:
    - `resetfarming`: farms purple grade item in daily dark lairs by resetting if no drop.
@@ -46,7 +46,7 @@ It currently only support English UI. Main goal of NRBot is to automate repetiti
 
 **Action**: Repeatedly battle in arena. It chooses opponent 1-3 in turns to avoid keep losing to very strong opponent. The bot use a very simple strategy, where it just spam tapping skills and focus. Due to spamming, it won't focus very well (it keeps going on and off). In settings, you can make the bot save a screenshot for each battle. You can review the screenshots for its performance.
 
-**Disclaimer**: This strategy is not as good as manual play. It is very good at is tapping skills, but very dumb on choosing targets. I arrange my team as (1) high-AGI high-ATK long-CD EX Gayle (2) mid-AGI short-CD sword unit (3) low-AGI high-ATK short-CD greatsword unit. The idea is to AA kill a unit, hopefully get another AA out, then use 4 short CD skills to kill the rest. (Short-CD means CDR set + 2 EX sub weapons.) Enemy counters AA or high AGI AA kills can cause loses. This is good enough for me to auto farm coins, YMMV.
+**Disclaimer**: This strategy is not as good as manual play. It is very good at tapping skills, but very dumb on choosing targets. I arrange my team as (1) high-AGI high-ATK long-CD EX Gayle (2) mid-AGI short-CD sword unit (3) low-AGI high-ATK short-CD greatsword unit. The idea is to AA kill a unit, hopefully get another AA out, then use 4 short CD skills to kill the rest. (Short-CD means CDR set + 2 EX sub weapons.) Enemy counters AA or high AGI AA kills can cause loses. This is good enough for me to auto farm coins, YMMV.
 
 **Note**: After reviewing the screenshots, you can count then discard them by running `python CalcStats.py`. It will accumulate data into `stats.json`. So you can track your win rate over time.
 
