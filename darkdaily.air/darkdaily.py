@@ -48,7 +48,7 @@ def start_daily(diff, select_team=True):
         return
     sleep(1)
     if select_team:
-        while not exists(Template(r"team_darkdaily.png", threshold=0.9, record_pos=(-0.098, -0.157), resolution=(1920, 1080))):
+        while not exists(Template(r"team_darkdaily.png", threshold=0.93, record_pos=(-0.098, -0.157), resolution=(1920, 1080))):
             touch([692, 542])
             sleep(0.5)
     touch(start)
