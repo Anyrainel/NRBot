@@ -72,7 +72,7 @@ def loop(max_attempts=100, difficulty="easy", save_screenshot=True, select_team=
 def wait_fight(difficulty, save_screenshot):
     sleep(20)
     # wait(Template(r"boss_ui.png", threshold=0.8, record_pos=(-0.446, -0.218), resolution=(1920, 1080)), timeout=120, interval=0.5)
-    wait(Template(r"wave_3.png", threshold=0.95, record_pos=(0.47, -0.223), resolution=(1920, 1080)), timeout=120, interval=0.5)
+    wait(Template(r"wave_3.png", threshold=0.95, record_pos=(0.47, -0.223), resolution=(1920, 1080)), timeout=90, interval=0.5)
     sleep(3)
     touch(Template(r"pause_ui.png", threshold=0.7, rgb=False, record_pos=(0.467, -0.264), resolution=(1920, 1080)))
     sleep(0.5)
@@ -95,7 +95,8 @@ def wait_fight(difficulty, save_screenshot):
     # exists(Template(r"x1_vertical.png", record_pos=(0.207, -0.136), resolution=(1920, 1080)))
     # exists(Template(r"x0_icon.png", record_pos=(0.15, -0.137), resolution=(1920, 1080)))
     success = False
-    if exists(Template(r"x0_number.png", threshold=0.9, record_pos=(0.201, -0.138), resolution=(1920, 1080))) and exists(Template(r"x0_vertical.png", threshold=0.9, record_pos=(0.211, -0.136), resolution=(1920, 1080))) and exists(Template(r"x0_horizontal.png", threshold=0.9, record_pos=(0.223, -0.137), resolution=(1920, 1080))):
+    if exists(Template(r"x0_number.png", threshold=0.9, record_pos=(0.201, -0.138), resolution=(1920, 1080))) and exists(Template(r"x0_vertical.png", threshold=0.9, record_pos=(0.211, -0.136), resolution=(1920, 1080))): 
+        # and exists(Template(r"x0_horizontal.png", threshold=0.9, record_pos=(0.223, -0.137), resolution=(1920, 1080))):
         if save_screenshot:
             common.take_screenshot(difficulty + "_quit")
         touch(Template(r"quit_button.png", record_pos=(0.001, 0.168), resolution=(1920, 1080)))
